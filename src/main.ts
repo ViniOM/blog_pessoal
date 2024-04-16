@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
-const PORT: number = 3000;
+const PORT: number = 5000;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   process.env.TZ = '-03:00';
