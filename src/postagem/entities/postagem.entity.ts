@@ -3,11 +3,13 @@ import {
   Entity,
   Column,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { Transform, TransformFnParams } from 'class-transformer';
+import { Tema } from 'src/tema/entities/tema.entity';
 
-@Entity({ name: 'tb_postagem' })
+@Entity({ name: 'tb_postagens' })
 export class Postagem {
   @PrimaryGeneratedColumn()
   id: number;
@@ -24,4 +26,10 @@ export class Postagem {
 
   @UpdateDateColumn()
   Data: Date;
+
+  @ManyToOne(() => Tema, (tema) => tema.postagem, {
+    onDelete: 'CASCADE',
+  })
+  @IsNotEmpty()
+  tema: Tema;
 }

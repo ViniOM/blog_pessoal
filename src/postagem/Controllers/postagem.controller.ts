@@ -36,7 +36,7 @@ export class PostagemController {
     return this.postagemService.findByTitulo(id);
   }
 
-  @Post('/post')
+  @Post('/criar')
   @HttpCode(HttpStatus.CREATED)
   create(@Body() postagem: Postagem): Promise<Postagem> {
     return this.postagemService.create(postagem);
@@ -48,8 +48,8 @@ export class PostagemController {
     return this.postagemService.update(postagem);
   }
 
-  @Delete('/:id')
-  @HttpCode(HttpStatus.NO_CONTENT)
+  @Delete('/deletar/:id')
+  @HttpCode(HttpStatus.OK)
   delete(@Param('id', ParseIntPipe) id: number): Promise<DeleteResult> {
     return this.postagemService.delete(id);
   }
