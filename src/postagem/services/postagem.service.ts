@@ -25,11 +25,11 @@ export class PostagemService {
       );
     }
 
-    throw new HttpException(postagemLista, HttpStatus.OK);
+    return postagemLista;
   }
 
   async findById(id: number): Promise<Postagem> {
-    const postagem = await this.postagemRepository.findOne({
+    let postagem = await this.postagemRepository.findOne({
       where: { id: id },
     });
 
@@ -40,7 +40,7 @@ export class PostagemService {
       );
     }
 
-    throw new HttpException(postagem, HttpStatus.OK);
+    return postagem;
   }
 
   async findByTitulo(titulo: string): Promise<Postagem[]> {
@@ -55,7 +55,7 @@ export class PostagemService {
       );
     }
 
-    throw new HttpException(postagem, HttpStatus.OK);
+    return postagem;
   }
 
   async create(postagem: Postagem): Promise<Postagem> {
@@ -68,8 +68,7 @@ export class PostagemService {
         },
       );
     }
-    const newPostagem = await this.postagemRepository.save(postagem);
-    throw new HttpException(newPostagem, HttpStatus.CREATED);
+    return await this.postagemRepository.save(postagem);
   }
 
   async update(postagem: Postagem): Promise<Postagem> {
@@ -84,12 +83,11 @@ export class PostagemService {
       );
     }
 
-    const postagemAtualizada = await this.postagemRepository.save(postagem);
-    return postagemAtualizada;
+    return await this.postagemRepository.save(postagem);
   }
 
-  async delete(id: number): Promise<Postagem> {
-    const postagem = await this.postagemRepository.findOne({ where: { id } });
+  async delete(id: number): Promise<DeleteResult> {
+    const postagem = await this.findById(id);
 
     if (!postagem)
       throw new HttpException(
@@ -97,7 +95,7 @@ export class PostagemService {
         HttpStatus.NOT_FOUND,
         { cause: 'Não existe esse ID no banco de dados' },
       );
-    await this.postagemRepository.delete(id);
-    throw new HttpException(postagem, HttpStatus.NO_CONTENT);
+
+    return await this.postagemRepository.delete(id);
   }
 }
