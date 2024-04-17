@@ -17,6 +17,7 @@ import { AppService } from './app.service';
       password: 'root',
       database: 'db_blog_pessoal',
       synchronize: true,
+      logging: true,
       entities: [Postagem],
     }),
     PostagemModule,
