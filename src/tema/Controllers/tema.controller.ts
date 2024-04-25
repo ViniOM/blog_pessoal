@@ -9,12 +9,15 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { DeleteResult } from 'typeorm';
 import { Tema } from '../entities/tema.entity';
 import { TemaService } from '../services/tema.service';
+import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 
-@Controller('tema')
+@UseGuards(JwtAuthGuard)
+@Controller('/temas')
 export class TemaController {
   constructor(private readonly temaService: TemaService) {}
 
