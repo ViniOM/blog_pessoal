@@ -3,6 +3,9 @@
 /node_modules
 /build
 /test
+
+db_blogpessoal_test.db
+.vscode
 # Logs
 logs
 *.log

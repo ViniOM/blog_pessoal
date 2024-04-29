@@ -1,7 +1,7 @@
 import { Column, PrimaryGeneratedColumn, Entity, OneToMany } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 import { Transform, TransformFnParams } from 'class-transformer';
-import { Postagem } from 'src/postagem/entities/postagem.entity';
+import { Postagem } from '../../postagem/entities/postagem.entity';
 
 @Entity({ name: 'tb_temas' })
 export class Tema {
