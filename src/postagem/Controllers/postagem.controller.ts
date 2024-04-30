@@ -9,12 +9,17 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
+  UseGuards,
 } from '@nestjs/common';
 import { PostagemService } from '../services/postagem.service';
 import { Postagem } from '../entities/postagem.entity';
 import { DeleteResult } from 'typeorm';
+import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('postagem')
+@ApiTags('Postagem')
+@UseGuards(JwtAuthGuard)
+@Controller('/postagens')
 export class PostagemController {
   constructor(private readonly postagemService: PostagemService) {}
 
