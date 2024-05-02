@@ -4,7 +4,7 @@
   # Blog Pessoal
 
   <p>desenvolvido no Bootcamp intensivo de 3 meses da <b>Generation Brasil</b> </p> </br>
-<img src="https://github.com/ViniOM/blog_pessoal/assets/73274632/f04aecb5-5d77-49ea-8328-af8cd0a5d474"/>
+<img src="https://github.com/ViniOM/blog_pessoal/assets/73274632/5070e249-434a-4cab-905a-610e6238fb62"/>
 
   <i>Visualização do banco de dados relacional</i>
 </div>
