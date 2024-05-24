@@ -3,6 +3,7 @@ import { UsuarioService } from './../../usuario/services/usuario.service';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Bcrypt } from '../bcrypt/bcrypt';
 import { UsuarioLogin } from '../entities/usuarioLogin';
+import { Admin } from 'typeorm';
 
 @Injectable()
 export class AuthService {
@@ -45,6 +46,7 @@ export class AuthService {
       senha: '',
       foto: buscaUsuario.foto,
       token: `Bearer ${this.jwtService.sign(payload)}`,
+      admin: buscaUsuario.admin,
     };
   }
 }
