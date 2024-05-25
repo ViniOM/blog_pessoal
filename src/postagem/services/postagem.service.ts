@@ -49,6 +49,12 @@ export class PostagemService {
       },
     });
   }
+  async findByUsuarioId(usuarioId: number): Promise<Postagem[]> {
+    return this.postagemRepository.find({
+      where: { usuario: { id: usuarioId } },
+      relations: ['usuario', 'tema'],
+    });
+  }
 
   async create(postagem: Postagem): Promise<Postagem> {
     let tema = await this.temaService.findById(postagem.tema.id);

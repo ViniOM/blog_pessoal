@@ -60,4 +60,11 @@ export class PostagemController {
   delete(@Param('id', ParseIntPipe) id: number): Promise<DeleteResult> {
     return this.postagemService.delete(id);
   }
+
+  @Get('usuario/:id')
+  @HttpCode(HttpStatus.OK)
+  async findPostagensByUsuarioId(@Param('id') id: string) {
+    const usuarioId = parseInt(id, 10);
+    return this.postagemService.findByUsuarioId(usuarioId);
+  }
 }
